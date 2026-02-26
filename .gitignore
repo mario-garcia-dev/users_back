@@ -10,3 +10,4 @@ postgres/
 
 .vscode/
 .DS_Store
+/generated/prisma
