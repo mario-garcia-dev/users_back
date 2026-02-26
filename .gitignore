@@ -1,0 +1,12 @@
+node_modules/
+
+dist/
+build/
+postgres/
+
+.env
+
+*.log
+
+.vscode/
+.DS_Store
