@@ -1,4 +1,4 @@
-import { Datasource, Repository, UserEntity } from "../../domain";
+import { CreateUserDTO, UpdateUserDTO, Datasource, Repository, UserEntity } from "../../domain";
 
 export class RepositoryImplementation implements Repository {
 
@@ -6,8 +6,8 @@ export class RepositoryImplementation implements Repository {
         private readonly datasource: Datasource
     ) {}
 
-    createUser(user: UserEntity): Promise<UserEntity> {
-        throw new Error("Method not implemented.");
+    createUser(dto: CreateUserDTO): Promise<UserEntity> {
+        return this.datasource.createUser(dto);
     }
 
     getUsers(): Promise<UserEntity[]> {
@@ -15,15 +15,15 @@ export class RepositoryImplementation implements Repository {
     }
 
     getUserById(id: number): Promise<UserEntity> {
-        throw new Error("Method not implemented.");
+        return this.datasource.getUserById(id);
     }
 
-    updateUser(user: UserEntity): Promise<UserEntity> {
-        throw new Error("Method not implemented.");
+    updateUser(dto: UpdateUserDTO): Promise<UserEntity> {
+        return this.datasource.updateUser(dto);
     }
 
     deleteUser(id: number): Promise<UserEntity> {
-        throw new Error("Method not implemented.");
+        return this.datasource.deleteUser(id);
     }
 
 }

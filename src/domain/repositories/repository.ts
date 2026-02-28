@@ -1,8 +1,9 @@
+import { CreateUserDTO } from "../dtos/users/create-user";
 import { UserEntity } from "../entities/UserEntity"
 
 export abstract class Repository {
 
-    abstract createUser( user: UserEntity ): Promise<UserEntity>;
+    abstract createUser( dto: CreateUserDTO ): Promise<UserEntity>;
 
     abstract getUsers(): Promise<UserEntity[]>;
 
