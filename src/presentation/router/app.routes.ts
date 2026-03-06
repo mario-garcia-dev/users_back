@@ -16,6 +16,7 @@ export class AppRoutes {
         router.get("/api/users/:id", usersController.getUserById);
         router.put("/api/users/:id", usersController.updateUser);
         router.delete("/api/users/:id", usersController.deleteUser);
+        router.post("/api/auth/login", usersController.login);
 
         return router;
     }

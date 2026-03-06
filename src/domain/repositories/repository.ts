@@ -12,5 +12,7 @@ export abstract class Repository {
     abstract updateUser( user: UserEntity ): Promise<UserEntity>;
 
     abstract deleteUser( id: string ): Promise<UserEntity>;
+
+    abstract login( username: string, password: string ): Promise<UserEntity>;
     
 }

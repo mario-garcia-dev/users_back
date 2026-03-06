@@ -13,4 +13,6 @@ export abstract class Datasource {
 
     abstract deleteUser( id: string ): Promise<UserEntity>;
 
+    abstract login( username: string, password: string ): Promise<UserEntity>;
+
 }

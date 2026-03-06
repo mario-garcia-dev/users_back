@@ -6,6 +6,7 @@ import { CreateUserDTO, UpdateUserDTO } from "../../domain";
 import { GetUserById } from "../../domain/use-cases/get-user";
 import { UpdateUser } from "../../domain/use-cases/update-user";
 import { DeleteUser } from "../../domain/use-cases/delete-user";
+import { Login } from "../../domain/use-cases/login";
 export class UsersController {
     constructor(
        private readonly repository: Repository
@@ -55,6 +56,19 @@ export class UsersController {
         new DeleteUser(this.repository)
             .execute(id)
             .then(deletedUser => resp.json(deletedUser))
+            .catch(error => resp.status(400).json({error}));
+    }
+
+    public login = (req: Request<{}, {}, {username: string, password: string}>, resp: Response) => {
+        const { username, password } = req.body;
+
+        new Login(this.repository)
+            .execute(username, password)
+            .then(user => resp.json({
+                message: "Logged successfully",
+                userId: user.id,
+                username
+            }))
             .catch(error => resp.status(400).json({error}));
     }
 }

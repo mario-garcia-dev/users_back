@@ -47,5 +47,17 @@ export class PostgresImplementation implements Datasource {
 
         return UserEntity.fromObj(deleted);
     }
+
+    async login(username: string, password: string): Promise<UserEntity> {
+        const user = await prisma.users.findFirst({
+            where: { username }
+        });
+
+        if (!user) throw "User doesn't exist";
+
+        if (password !== user.password) throw "Passoword incorrect";
+        
+        return UserEntity.fromObj(user);    
+    }
     
 }

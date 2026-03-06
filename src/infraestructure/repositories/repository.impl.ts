@@ -26,4 +26,8 @@ export class RepositoryImplementation implements Repository {
         return this.datasource.deleteUser(id);
     }
 
+    login(username: string, password: string): Promise<UserEntity> {
+        return this.datasource.login(username, password);
+    }
+
 }
