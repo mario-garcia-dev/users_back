@@ -7,10 +7,10 @@ export abstract class Datasource {
 
     abstract getUsers(): Promise<UserEntity[]>;
 
-    abstract getUserById( id: number ): Promise<UserEntity>;
+    abstract getUserById( id: string ): Promise<UserEntity>;
 
     abstract updateUser( user: UserEntity ): Promise<UserEntity>;
 
-    abstract deleteUser( id: number ): Promise<UserEntity>;
+    abstract deleteUser( id: string ): Promise<UserEntity>;
 
 }

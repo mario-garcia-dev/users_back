@@ -15,7 +15,7 @@ export class PostgresImplementation implements Datasource {
         return users.map(u => UserEntity.fromObj(u));
     }
     
-    async getUserById(id: number): Promise<UserEntity> {
+    async getUserById(id: string): Promise<UserEntity> {
         const user = await prisma.users.findFirst({
             where: { id }
         });
@@ -38,7 +38,7 @@ export class PostgresImplementation implements Datasource {
         return UserEntity.fromObj(updatedUser);
     }
 
-    async deleteUser(id: number): Promise<UserEntity> {
+    async deleteUser(id: string): Promise<UserEntity> {
         await this.getUserById(id);
 
         const deleted = await prisma.users.delete({

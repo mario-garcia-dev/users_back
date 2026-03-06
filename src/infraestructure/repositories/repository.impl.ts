@@ -14,7 +14,7 @@ export class RepositoryImplementation implements Repository {
         return this.datasource.getUsers();
     }
 
-    getUserById(id: number): Promise<UserEntity> {
+    getUserById(id: string): Promise<UserEntity> {
         return this.datasource.getUserById(id);
     }
 
@@ -22,7 +22,7 @@ export class RepositoryImplementation implements Repository {
         return this.datasource.updateUser(dto);
     }
 
-    deleteUser(id: number): Promise<UserEntity> {
+    deleteUser(id: string): Promise<UserEntity> {
         return this.datasource.deleteUser(id);
     }
 

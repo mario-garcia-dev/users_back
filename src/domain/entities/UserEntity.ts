@@ -1,6 +1,6 @@
 export class UserEntity {
     constructor(
-        public id: number,
+        public id: string,
         public username: string,
         public email: string,
         public name: string,

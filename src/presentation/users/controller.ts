@@ -30,16 +30,15 @@ export class UsersController {
             .catch(error => resp.status(400).json({error}));
     }
 
-    public getUserById = (req: Request, resp: Response) => {
-        const id = +req.params.id!;
-        if (isNaN(id)) return resp.status(400).json({ error: `ID is not a number`});
+    public getUserById = (req: Request<{id: string}>, resp: Response) => {
+        const id = req.params.id!;
         new GetUserById(this.repository)
             .execute(id)
             .then(user => resp.json(user))
             .catch(error => resp.status(400).json({error}));
     }
 
-    public updateUser = (req: Request, resp: Response) => {
+    public updateUser = (req: Request<{id: string}>, resp: Response) => {
         const id = +req.params.id!;
         const [ error, dto ] = UpdateUserDTO.update({...req.body, id});
 
@@ -51,8 +50,8 @@ export class UsersController {
             .catch(error => resp.status(400).json({error}));
     }
 
-    public deleteUser = (req: Request, resp: Response) => {
-        const id = +req.params.id!;
+    public deleteUser = (req: Request<{id: string}>, resp: Response) => {
+        const id = req.params.id!;
         new DeleteUser(this.repository)
             .execute(id)
             .then(deletedUser => resp.json(deletedUser))
