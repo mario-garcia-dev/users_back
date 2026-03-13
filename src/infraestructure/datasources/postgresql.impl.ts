@@ -5,7 +5,10 @@ export class PostgresImplementation implements Datasource {
     
     async createUser(dto: CreateUserDTO): Promise<UserEntity> {
         const createdUser = await prisma.users.create({
-            data: dto
+            data: {
+                ...dto,
+                isActive: dto.isActive ?? true
+            }
         });
         return UserEntity.fromObj(createdUser);
     }

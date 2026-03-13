@@ -66,8 +66,12 @@ export class UsersController {
             .execute(username, password)
             .then(user => resp.json({
                 message: "Logged successfully",
-                userId: user.id,
-                username
+                id: user.id,
+                username: user.username,
+                email: user.email,
+                name: user.name,
+                isActive: user.isActive,
+                roles: user.roles
             }))
             .catch(error => resp.status(400).json({error}));
     }

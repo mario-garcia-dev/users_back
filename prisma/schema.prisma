@@ -19,4 +19,6 @@ model Users {
     email String @unique
     name String
     password String
+    isActive Boolean @default(false)
+    roles String[]
 }
